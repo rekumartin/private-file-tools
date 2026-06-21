@@ -42,6 +42,26 @@ const tools = [
     href: `${b}encrypt-file`,
   },
 ];
+
+const trustPoints = [
+  {
+    heading: 'Files never leave your device',
+    body: 'Processing runs in your browser tab using JavaScript. Nothing is sent over the network — there is no server to send it to.',
+  },
+  {
+    heading: 'Verify it yourself',
+    body: 'Once this page loads, disconnect from the internet and try a tool. Everything still works. That\'s the only proof that matters.',
+  },
+  {
+    heading: 'No account, no tracking',
+    body: 'No sign-up, no cookies, no analytics by default. We can\'t see your files even if we wanted to.',
+  },
+  {
+    heading: 'Open source',
+    body: 'Every line that runs in your browser is public.',
+    link: { href: 'https://github.com/rekumartin/private-file-tools', label: 'View source on GitHub →' },
+  },
+];
 ---
 
 <BaseLayout
@@ -50,26 +70,59 @@ const tools = [
   canonicalPath="/"
 >
   <!-- Hero -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-14">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-16">
     <h1 class="text-5xl sm:text-6xl font-bold text-stone-900 leading-[1.08] tracking-tight mb-5">
       File tools that<br class="hidden sm:block" />
       respect your privacy.
     </h1>
-    <p class="text-lg text-stone-500 max-w-lg leading-relaxed mb-8">
-      Every tool runs entirely in your browser. Your files never touch our
-      servers — because there are no servers.
+    <p class="text-lg text-stone-500 max-w-lg leading-relaxed mb-3">
+      Every tool runs entirely in your browser. Your files never touch
+      our servers — because there are no servers.
+    </p>
+    <p class="text-sm font-medium text-stone-700 mb-8">
+      Once the page loads, disconnect from the internet and try — it still works.
     </p>
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-stone-400">
       <span>No uploads</span>
       <span aria-hidden="true">·</span>
-      <span>Runs in your browser</span>
+      <span>Works offline</span>
       <span aria-hidden="true">·</span>
       <span>Always free</span>
     </div>
   </section>
 
+  <!-- Why it's private -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 border-t border-stone-100 pt-14" aria-labelledby="privacy-heading">
+    <p id="privacy-heading" class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-8">
+      Why it's private
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
+      {trustPoints.map(({ heading, body, link }) => (
+        <div>
+          <p class="font-semibold text-stone-900 text-sm mb-2">{heading}</p>
+          <p class="text-sm text-stone-500 leading-relaxed">
+            {body}
+            {link && (
+              <>
+                {' '}
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-stone-700 underline underline-offset-2 hover:text-stone-900 transition-colors"
+                >
+                  {link.label}
+                </a>
+              </>
+            )}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- Tools grid -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-24" aria-labelledby="tools-heading">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-28 border-t border-stone-100 pt-14" aria-labelledby="tools-heading">
     <p
       id="tools-heading"
       class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-4"
