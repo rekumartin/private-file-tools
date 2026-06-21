@@ -5,13 +5,6 @@
  * Dispatches a `filedropzone:change` CustomEvent on the root element when files
  * are selected, with `detail: { files: File[] }`. The parent page listens for
  * this event and handles processing.
- *
- * Usage:
- *   <FileDropzone id="my-zone" accept=".heic,.heif" multiple />
- *
- *   document.getElementById('my-zone').addEventListener('filedropzone:change', (e) => {
- *     const { files } = e.detail; // File[]
- *   });
  */
 interface Props {
   id: string;
@@ -32,20 +25,19 @@ const {
 const acceptDisplay = accept
   .split(',')
   .map((s) => s.trim().replace(/^\./, '').toUpperCase())
-  .filter((s, i, arr) => arr.indexOf(s) === i) // dedupe
+  .filter((s, i, arr) => arr.indexOf(s) === i)
   .join(', ');
 ---
 
 <div
   id={id}
-  class="file-dropzone relative border-2 border-dashed border-gray-300 rounded-2xl p-10 text-center cursor-pointer transition-colors duration-150 hover:border-blue-400 hover:bg-blue-50/30"
+  class="file-dropzone relative border-2 border-dashed border-stone-300 rounded-lg p-10 text-center cursor-pointer transition-colors duration-150 hover:border-stone-500 hover:bg-stone-100/40"
   data-accept={accept}
   data-multiple={multiple ? 'true' : 'false'}
   role="button"
   tabindex="0"
   aria-label={label}
 >
-  <!-- Hidden native file input -->
   <input
     type="file"
     class="sr-only"
@@ -55,12 +47,12 @@ const acceptDisplay = accept
     tabindex="-1"
   />
 
-  <!-- Idle state (default) -->
+  <!-- Idle state -->
   <div class="dropzone-idle flex flex-col items-center gap-3 pointer-events-none">
     <svg
-      class="text-gray-400"
-      width="40"
-      height="40"
+      class="text-stone-400"
+      width="36"
+      height="36"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -73,17 +65,17 @@ const acceptDisplay = accept
       <polyline points="17 8 12 3 7 8" />
       <line x1="12" y1="3" x2="12" y2="15" />
     </svg>
-    <p class="font-medium text-gray-700">{label}</p>
-    {hint && <p class="text-sm text-gray-500">{hint}</p>}
-    <p class="text-xs text-gray-500 mt-1">Accepts: {acceptDisplay}</p>
+    <p class="font-medium text-stone-700 text-sm">{label}</p>
+    {hint && <p class="text-xs text-stone-500">{hint}</p>}
+    <p class="text-xs text-stone-400 mt-0.5">Accepts: {acceptDisplay}</p>
   </div>
 
-  <!-- Files-selected state (shown after selection) -->
+  <!-- Files-selected state -->
   <div class="dropzone-selected hidden flex-col items-center gap-2 pointer-events-none">
     <svg
-      class="text-blue-500"
-      width="32"
-      height="32"
+      class="text-stone-700"
+      width="28"
+      height="28"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -95,16 +87,16 @@ const acceptDisplay = accept
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
     </svg>
-    <p class="font-medium text-gray-900 dropzone-filename"></p>
-    <p class="text-sm text-gray-500">Click or drop to change selection</p>
+    <p class="font-medium text-stone-900 text-sm dropzone-filename"></p>
+    <p class="text-xs text-stone-500">Click or drop to change selection</p>
   </div>
 
-  <!-- Drag-over overlay (shown while dragging over) -->
+  <!-- Drag-over overlay -->
   <div
-    class="dropzone-dragover hidden absolute inset-0 rounded-2xl bg-blue-50 border-2 border-blue-400 flex items-center justify-center pointer-events-none"
+    class="dropzone-dragover hidden absolute inset-0 rounded-lg bg-stone-100 border-2 border-stone-500 flex items-center justify-center pointer-events-none"
     aria-hidden="true"
   >
-    <p class="text-blue-600 font-semibold text-lg">Release to add files</p>
+    <p class="text-stone-700 font-semibold text-sm">Release to add files</p>
   </div>
 </div>
 

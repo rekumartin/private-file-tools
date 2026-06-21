@@ -3,22 +3,18 @@
 @tailwind utilities;
 
 /* ── Focus ring ───────────────────────────────────────────────────────────────
-   Visible on all backgrounds: blue ring + white "halo" so the ring doesn't
-   blend into blue buttons or dark surfaces. */
+   Stone-900 ring with stone-50 halo so it reads on all backgrounds. */
 *:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #1c1917; /* stone-900 */
   outline-offset: 2px;
   border-radius: 4px;
-  /* White shadow creates contrast gap between element and blue ring */
-  box-shadow: 0 0 0 4px white;
+  box-shadow: 0 0 0 4px #fafaf9; /* stone-50 */
 }
 
-/* On blue/colored buttons the ring needs to invert — white ring, dark offset */
-[class~="bg-blue-600"]:focus-visible,
-[class~="bg-blue-700"]:focus-visible,
-[class~="bg-blue-500"]:focus-visible {
+/* On dark buttons (stone-900 bg) the ring needs to invert */
+[class~="bg-stone-900"]:focus-visible {
   outline-color: white;
-  box-shadow: 0 0 0 4px #1d4ed8; /* blue-700 outer ring */
+  box-shadow: 0 0 0 4px #44403c; /* stone-700 outer ring */
 }
 
 /* ── Details / Summary ────────────────────────────────────────────────────────
@@ -30,7 +26,6 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* ── Smooth transitions on details/summary ────────────────────────────────── */
 details > summary:focus-visible {
-  border-radius: 0; /* summary is full-width — no radius clipping */
+  border-radius: 0;
 }

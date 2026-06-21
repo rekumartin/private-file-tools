@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FileDropzone from '../components/FileDropzone.astro';
-import PrivacyBadge from '../components/PrivacyBadge.astro';
 import FaqBlock, { type FaqItem } from '../components/FaqBlock.astro';
 
 const b = import.meta.env.BASE_URL;
@@ -46,32 +45,27 @@ const presets = [
   canonicalPath="/compress-pdf"
 >
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-    <!-- Page header -->
     <div class="mb-8">
-      <div class="flex items-center gap-3 mb-4 flex-wrap">
-        <span class="text-3xl leading-none" aria-hidden="true">📄</span>
-        <PrivacyBadge size="sm" />
-      </div>
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
+      <h1 class="text-3xl sm:text-4xl font-bold text-stone-900 mb-3 tracking-tight">
         Compress PDF
       </h1>
-      <p class="text-gray-500 text-lg leading-relaxed">
+      <p class="text-stone-500 text-lg leading-relaxed">
         Get your PDF under a target size — 1 MB, 2 MB, or any limit you need.
         Pick a mode, set your target, drop the file. Everything runs in your browser.
       </p>
     </div>
 
-    <!-- Settings ─────────────────────────────────────────────────────────────── -->
-    <div class="mb-6 rounded-2xl border border-gray-200 bg-gray-50 p-5 space-y-5">
+    <!-- Settings -->
+    <div class="mb-6 rounded-lg border border-stone-200 bg-stone-50/60 p-5 space-y-5">
 
       <!-- Mode selector -->
       <fieldset>
-        <legend class="text-sm font-semibold text-gray-700 mb-3">Compression mode</legend>
+        <legend class="text-sm font-semibold text-stone-700 mb-3">Compression mode</legend>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <!-- Optimize card -->
           <label
             id="card-optimize"
-            class="mode-card flex items-start gap-3 rounded-xl border-2 border-blue-500 bg-blue-50/50 p-4 cursor-pointer transition-colors"
+            class="mode-card flex items-start gap-3 rounded-lg border-2 border-stone-900 bg-stone-900/5 p-4 cursor-pointer transition-colors"
           >
             <input
               type="radio"
@@ -80,12 +74,12 @@ const presets = [
               checked
               class="sr-only"
             />
-            <div class="mt-0.5 h-4 w-4 shrink-0 rounded-full border-2 border-blue-500 flex items-center justify-center mode-radio-dot">
-              <div class="h-2 w-2 rounded-full bg-blue-500 mode-dot-fill"></div>
+            <div class="mt-0.5 h-4 w-4 shrink-0 rounded-full border-2 border-stone-900 flex items-center justify-center mode-radio-dot">
+              <div class="h-2 w-2 rounded-full bg-stone-900 mode-dot-fill"></div>
             </div>
             <div>
-              <p class="font-semibold text-gray-900 text-sm">Optimize — keep text</p>
-              <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+              <p class="font-semibold text-stone-900 text-sm">Optimize — keep text</p>
+              <p class="text-xs text-stone-500 mt-1 leading-relaxed">
                 Compresses PDF structure without re-encoding content. Text stays selectable and
                 links work. Typically <strong>5–25% smaller</strong>.
               </p>
@@ -95,7 +89,7 @@ const presets = [
           <!-- Rasterize card -->
           <label
             id="card-rasterize"
-            class="mode-card flex items-start gap-3 rounded-xl border-2 border-gray-200 p-4 cursor-pointer hover:border-gray-300 transition-colors"
+            class="mode-card flex items-start gap-3 rounded-lg border-2 border-stone-200 p-4 cursor-pointer hover:border-stone-300 transition-colors"
           >
             <input
               type="radio"
@@ -103,12 +97,12 @@ const presets = [
               value="rasterize"
               class="sr-only"
             />
-            <div class="mt-0.5 h-4 w-4 shrink-0 rounded-full border-2 border-gray-300 flex items-center justify-center mode-radio-dot">
+            <div class="mt-0.5 h-4 w-4 shrink-0 rounded-full border-2 border-stone-300 flex items-center justify-center mode-radio-dot">
               <div class="h-2 w-2 rounded-full bg-transparent mode-dot-fill"></div>
             </div>
             <div>
-              <p class="font-semibold text-gray-900 text-sm">Rasterize — max compression</p>
-              <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+              <p class="font-semibold text-stone-900 text-sm">Rasterize — max compression</p>
+              <p class="text-xs text-stone-500 mt-1 leading-relaxed">
                 Re-renders each page as an image. Text becomes
                 <strong class="text-amber-700">non-selectable</strong>. Up to
                 <strong>60–90% smaller</strong> — use for strict size limits.
@@ -117,16 +111,16 @@ const presets = [
           </label>
         </div>
 
-        <!-- Rasterize trade-off warning (shown when rasterize selected) -->
+        <!-- Rasterize trade-off warning -->
         <div
           id="rasterize-warning"
-          class="hidden mt-3 flex items-start gap-2.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3"
+          class="hidden mt-3 flex items-start gap-2.5 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3"
           role="alert"
         >
           <svg
             class="shrink-0 mt-0.5 text-amber-600"
-            width="16"
-            height="16"
+            width="15"
+            height="15"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -149,17 +143,17 @@ const presets = [
 
       <!-- Target size -->
       <div>
-        <p class="text-sm font-semibold text-gray-700 mb-3">Target maximum size</p>
+        <p class="text-sm font-semibold text-stone-700 mb-3">Target maximum size</p>
         <div class="flex flex-wrap items-center gap-2">
           {
             presets.map(({ label, bytes }, i) => (
               <button
                 type="button"
                 class:list={[
-                  'target-btn rounded-lg px-4 py-1.5 text-sm font-medium border transition-colors',
+                  'target-btn rounded-md px-4 py-1.5 text-sm font-medium border transition-colors',
                   i === 1
-                    ? 'bg-blue-600 text-white border-blue-600'
-                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400',
+                    ? 'bg-stone-900 text-white border-stone-900'
+                    : 'bg-white text-stone-700 border-stone-300 hover:border-stone-500',
                 ]}
                 data-bytes={bytes}
                 aria-pressed={i === 1 ? 'true' : 'false'}
@@ -168,7 +162,7 @@ const presets = [
               </button>
             ))
           }
-          <span class="text-gray-400 text-sm" aria-hidden="true">or</span>
+          <span class="text-stone-400 text-sm" aria-hidden="true">or</span>
           <div class="flex items-center gap-1.5">
             <input
               id="custom-mb"
@@ -176,31 +170,30 @@ const presets = [
               min="0.1"
               step="0.1"
               placeholder="Custom"
-              class="w-24 rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+              class="w-24 rounded-md border border-stone-300 px-3 py-1.5 text-sm bg-white focus:border-stone-700 focus:ring-1 focus:ring-stone-700 outline-none"
               aria-label="Custom target size in megabytes"
             />
-            <span class="text-sm text-gray-500">MB</span>
+            <span class="text-sm text-stone-500">MB</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Re-compress notice (appears when settings change after a result is shown) -->
+    <!-- Re-compress notice -->
     <div
       id="recompress-notice"
-      class="hidden mb-4 flex items-center justify-between gap-4 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3"
+      class="hidden mb-4 flex items-center justify-between gap-4 rounded-lg border border-stone-200 bg-stone-100 px-4 py-3"
     >
-      <p class="text-sm text-blue-800">Settings changed — re-compress to apply.</p>
+      <p class="text-sm text-stone-700">Settings changed — re-compress to apply.</p>
       <button
         id="recompress-btn"
         type="button"
-        class="shrink-0 rounded-lg bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+        class="shrink-0 rounded-md bg-stone-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-stone-800 transition-colors"
       >
         Re-compress
       </button>
     </div>
 
-    <!-- Dropzone -->
     <FileDropzone
       id="pdf-dropzone"
       accept=".pdf,application/pdf"
@@ -209,13 +202,12 @@ const presets = [
       hint="Single PDF file — any size"
     />
 
-    <!-- Status -->
     <div id="status-area" class="mt-4 min-h-[1.5rem]" aria-live="polite" aria-atomic="true">
-      <div id="status-processing" class="hidden items-center gap-3 text-blue-600 text-sm">
+      <div id="status-processing" class="hidden items-center gap-3 text-stone-600 text-sm">
         <svg
           class="animate-spin shrink-0"
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -229,39 +221,27 @@ const presets = [
       <p id="status-error" class="hidden text-red-600 text-sm"></p>
     </div>
 
-    <!-- Result -->
     <section id="results-area" class="mt-8 hidden" aria-labelledby="results-heading">
-      <h2 id="results-heading" class="font-semibold text-gray-900 mb-4">Result</h2>
+      <h2 id="results-heading" class="font-semibold text-stone-900 text-sm mb-4">Result</h2>
       <div id="result-card"></div>
     </section>
 
-    <!-- FAQ -->
     <FaqBlock items={faqs} />
 
-    <!-- Other tools -->
-    <div class="mt-12 border-t border-gray-100 pt-8">
-      <p class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-4">More tools</p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <a href={`${b}heic-to-jpg`} class="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 hover:border-blue-300 hover:shadow-sm transition-all">
-          <span class="text-xl leading-none shrink-0" aria-hidden="true">🖼️</span>
-          <div class="min-w-0">
-            <p class="font-medium text-gray-900 text-sm">HEIC to JPG</p>
-            <p class="text-xs text-gray-500 mt-0.5">Convert iPhone photos</p>
-          </div>
+    <div class="mt-12 pt-8 border-t border-stone-100">
+      <p class="text-xs font-medium uppercase tracking-widest text-stone-400 mb-3">More tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <a href={`${b}heic-to-jpg`} class="block px-4 py-3 rounded-lg border border-stone-200 hover:border-stone-400 hover:bg-white transition-all group">
+          <p class="text-sm font-medium text-stone-800 group-hover:text-stone-900">HEIC to JPG</p>
+          <p class="text-xs text-stone-500 mt-0.5">Convert iPhone photos</p>
         </a>
-        <a href={`${b}remove-photo-metadata`} class="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 hover:border-blue-300 hover:shadow-sm transition-all">
-          <span class="text-xl leading-none shrink-0" aria-hidden="true">🔐</span>
-          <div class="min-w-0">
-            <p class="font-medium text-gray-900 text-sm">Remove Metadata</p>
-            <p class="text-xs text-gray-500 mt-0.5">Strip GPS and camera info</p>
-          </div>
+        <a href={`${b}remove-photo-metadata`} class="block px-4 py-3 rounded-lg border border-stone-200 hover:border-stone-400 hover:bg-white transition-all group">
+          <p class="text-sm font-medium text-stone-800 group-hover:text-stone-900">Remove Metadata</p>
+          <p class="text-xs text-stone-500 mt-0.5">Strip GPS and camera info</p>
         </a>
-        <a href={`${b}encrypt-file`} class="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4 hover:border-blue-300 hover:shadow-sm transition-all">
-          <span class="text-xl leading-none shrink-0" aria-hidden="true">🔑</span>
-          <div class="min-w-0">
-            <p class="font-medium text-gray-900 text-sm">Encrypt a File</p>
-            <p class="text-xs text-gray-500 mt-0.5">AES-256 password protection</p>
-          </div>
+        <a href={`${b}encrypt-file`} class="block px-4 py-3 rounded-lg border border-stone-200 hover:border-stone-400 hover:bg-white transition-all group">
+          <p class="text-sm font-medium text-stone-800 group-hover:text-stone-900">Encrypt a File</p>
+          <p class="text-xs text-stone-500 mt-0.5">AES-256 password protection</p>
         </a>
       </div>
     </div>
@@ -272,11 +252,9 @@ const presets = [
   import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
   import { setPdfWorkerSrc, compressPdf, type CompressMode, type CompressResult } from '../lib/pdfCompress';
 
-  // Register the worker URL at startup (just a string assignment — no pdfjs code loads yet)
   setPdfWorkerSrc(pdfWorkerUrl);
   import { downloadBlob } from '../lib/download';
 
-  /* ── DOM refs ──────────────────────────────────────────────────────────── */
   const dropzone = document.getElementById('pdf-dropzone')!;
   const statusProcessing = document.getElementById('status-processing')!;
   const statusText = document.getElementById('status-text')!;
@@ -286,13 +264,12 @@ const presets = [
   const recompressNotice = document.getElementById('recompress-notice')!;
   const recompressBtn = document.getElementById('recompress-btn')!;
 
-  /* ── State ─────────────────────────────────────────────────────────────── */
   let selectedMode: CompressMode = 'optimize';
-  let targetBytes = 2_097_152; // 2 MB default
+  let targetBytes = 2_097_152;
   let currentFile: File | null = null;
   let hasResult = false;
 
-  /* ── Settings: mode selector ───────────────────────────────────────────── */
+  /* ── Mode selector ─────────────────────────────────────────────────────────── */
   const modeInputs = document.querySelectorAll<HTMLInputElement>('input[name="compress-mode"]');
   const modeCards = document.querySelectorAll<HTMLElement>('.mode-card');
   const rasterizeWarning = document.getElementById('rasterize-warning')!;
@@ -301,14 +278,14 @@ const presets = [
     modeCards.forEach((card) => {
       const input = card.querySelector<HTMLInputElement>('input')!;
       const isSelected = input.checked;
-      card.classList.toggle('border-blue-500', isSelected);
-      card.classList.toggle('bg-blue-50/50', isSelected);
-      card.classList.toggle('border-gray-200', !isSelected);
+      card.classList.toggle('border-stone-900', isSelected);
+      card.classList.toggle('bg-stone-900/5', isSelected);
+      card.classList.toggle('border-stone-200', !isSelected);
       const dot = card.querySelector<HTMLElement>('.mode-dot-fill')!;
       const ring = card.querySelector<HTMLElement>('.mode-radio-dot')!;
-      ring.classList.toggle('border-blue-500', isSelected);
-      ring.classList.toggle('border-gray-300', !isSelected);
-      dot.classList.toggle('bg-blue-500', isSelected);
+      ring.classList.toggle('border-stone-900', isSelected);
+      ring.classList.toggle('border-stone-300', !isSelected);
+      dot.classList.toggle('bg-stone-900', isSelected);
       dot.classList.toggle('bg-transparent', !isSelected);
     });
     const isRasterize = selectedMode === 'rasterize';
@@ -324,19 +301,19 @@ const presets = [
     });
   });
 
-  /* ── Settings: target size ─────────────────────────────────────────────── */
+  /* ── Target size ───────────────────────────────────────────────────────────── */
   const targetBtns = document.querySelectorAll<HTMLButtonElement>('.target-btn');
   const customInput = document.getElementById('custom-mb') as HTMLInputElement;
 
   function syncTargetUI(activeBytes: number): void {
     targetBtns.forEach((btn) => {
       const active = parseInt(btn.dataset.bytes!) === activeBytes;
-      btn.classList.toggle('bg-blue-600', active);
+      btn.classList.toggle('bg-stone-900', active);
       btn.classList.toggle('text-white', active);
-      btn.classList.toggle('border-blue-600', active);
+      btn.classList.toggle('border-stone-900', active);
       btn.classList.toggle('bg-white', !active);
-      btn.classList.toggle('text-gray-700', !active);
-      btn.classList.toggle('border-gray-300', !active);
+      btn.classList.toggle('text-stone-700', !active);
+      btn.classList.toggle('border-stone-300', !active);
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
   }
@@ -354,12 +331,12 @@ const presets = [
     const mb = parseFloat(customInput.value);
     if (mb > 0 && isFinite(mb)) {
       targetBytes = Math.round(mb * 1_048_576);
-      syncTargetUI(-1); // no preset selected
+      syncTargetUI(-1);
       if (hasResult) showRecompressNotice();
     }
   });
 
-  /* ── Status helpers ────────────────────────────────────────────────────── */
+  /* ── Status helpers ────────────────────────────────────────────────────────── */
   function setProcessing(active: boolean, message = ''): void {
     statusText.textContent = message;
     statusProcessing.classList.toggle('hidden', !active);
@@ -381,7 +358,7 @@ const presets = [
     recompressNotice.classList.remove('flex');
   }
 
-  /* ── Formatting helpers ────────────────────────────────────────────────── */
+  /* ── Formatting helpers ────────────────────────────────────────────────────── */
   function fmtBytes(n: number): string {
     if (n < 1_024) return `${n} B`;
     if (n < 1_048_576) return `${(n / 1_024).toFixed(1)} KB`;
@@ -392,7 +369,7 @@ const presets = [
     return `${Math.round((1 - a / b) * 100)}%`;
   }
 
-  /* ── Result card builder ───────────────────────────────────────────────── */
+  /* ── Result card builder ───────────────────────────────────────────────────── */
   function showResult(result: CompressResult): void {
     hasResult = true;
     resultsArea.classList.remove('hidden');
@@ -402,18 +379,17 @@ const presets = [
     const reduction = pct(result.finalSize, result.originalSize);
 
     const card = document.createElement('div');
-    card.className = 'rounded-2xl border border-gray-200 bg-white overflow-hidden';
+    card.className = 'rounded-lg border border-stone-200 bg-white overflow-hidden';
 
-    // ── Size comparison row ────────────────────────────────────────────────
     const sizeRow = document.createElement('div');
-    sizeRow.className = 'px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 border-b border-gray-100';
+    sizeRow.className = 'px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 border-b border-stone-100';
 
     const sizes = document.createElement('div');
     sizes.className = 'flex-1 space-y-1';
 
     const origLine = document.createElement('p');
-    origLine.className = 'text-sm text-gray-500';
-    origLine.innerHTML = `Original: <strong class="text-gray-700">${fmtBytes(result.originalSize)}</strong>`;
+    origLine.className = 'text-sm text-stone-500';
+    origLine.innerHTML = `Original: <strong class="text-stone-700">${fmtBytes(result.originalSize)}</strong>`;
 
     const finalLine = document.createElement('p');
     finalLine.className = 'text-sm';
@@ -427,7 +403,7 @@ const presets = [
         ` <span class="text-green-600 font-medium">(${reduction} smaller ✓ under ${targetLabel})</span>`;
     } else {
       finalLine.innerHTML =
-        `Final: <strong class="text-gray-700">${fmtBytes(result.finalSize)}</strong>` +
+        `Final: <strong class="text-stone-700">${fmtBytes(result.finalSize)}</strong>` +
         ` <span class="text-amber-600 font-medium">(${reduction} smaller — still over ${targetLabel})</span>`;
     }
 
@@ -436,7 +412,7 @@ const presets = [
     const dlBtn = document.createElement('button');
     dlBtn.type = 'button';
     dlBtn.className =
-      'shrink-0 rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors';
+      'shrink-0 rounded-md bg-stone-900 px-5 py-2 text-sm font-medium text-white hover:bg-stone-800 transition-colors';
     dlBtn.textContent = 'Download';
     dlBtn.setAttribute('aria-label', `Download ${result.filename}`);
     dlBtn.addEventListener('click', () =>
@@ -446,7 +422,6 @@ const presets = [
     sizeRow.append(sizes, dlBtn);
     card.appendChild(sizeRow);
 
-    // ── Mode-specific notes ────────────────────────────────────────────────
     const notes: string[] = [];
 
     if (result.mode === 'rasterize') {
@@ -477,7 +452,7 @@ const presets = [
       noteBlock.className = 'px-5 py-3 space-y-1';
       notes.forEach((note) => {
         const p = document.createElement('p');
-        p.className = 'text-xs text-gray-500 leading-relaxed';
+        p.className = 'text-xs text-stone-500 leading-relaxed';
         p.innerHTML = note;
         noteBlock.appendChild(p);
       });
@@ -487,7 +462,7 @@ const presets = [
     resultCard.appendChild(card);
   }
 
-  /* ── Compression runner ────────────────────────────────────────────────── */
+  /* ── Compression runner ────────────────────────────────────────────────────── */
   async function runCompression(): Promise<void> {
     if (!currentFile) return;
 
@@ -512,7 +487,6 @@ const presets = [
     }
   }
 
-  /* ── File selection ────────────────────────────────────────────────────── */
   dropzone.addEventListener('filedropzone:change', async (rawEvent) => {
     const { files } = (rawEvent as CustomEvent<{ files: File[] }>).detail;
     if (!files.length) return;
@@ -520,6 +494,5 @@ const presets = [
     await runCompression();
   });
 
-  /* ── Re-compress button ────────────────────────────────────────────────── */
   recompressBtn.addEventListener('click', runCompression);
 </script>
