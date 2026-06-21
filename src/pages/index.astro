@@ -3,36 +3,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ToolCard from '../components/ToolCard.astro';
 import PrivacyBadge from '../components/PrivacyBadge.astro';
 
+const b = import.meta.env.BASE_URL;
 const tools = [
   {
     icon: '🖼️',
     title: 'HEIC to JPG',
     description:
       'Convert iPhone HEIC/HEIF photos to JPG instantly — no upload, no account, no size limits.',
-    href: '/heic-to-jpg',
+    href: `${b}heic-to-jpg`,
   },
   {
     icon: '🔐',
     title: 'Remove Photo Metadata',
     description:
       'Strip GPS location, camera model, and all hidden EXIF data from JPEG and PNG photos before sharing.',
-    href: '/remove-photo-metadata',
+    href: `${b}remove-photo-metadata`,
   },
   {
     icon: '📄',
     title: 'Compress PDF',
     description:
       'Shrink a PDF to under 1 MB, 2 MB, or any custom size limit. Choose between lossless optimization and maximum compression.',
-    href: '/compress-pdf',
+    href: `${b}compress-pdf`,
   },
   {
     icon: '🔑',
     title: 'Encrypt a File',
     description:
       'Password-protect any file with AES-256-GCM encryption using your browser\'s built-in crypto engine. No libraries downloaded.',
-    href: '/encrypt-file',
+    href: `${b}encrypt-file`,
   },
-] as const;
+];
 ---
 
 <BaseLayout

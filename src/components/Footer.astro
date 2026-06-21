@@ -8,10 +8,10 @@ const year = new Date().getFullYear();
     <nav aria-label="Footer navigation">
       <ul class="flex gap-6 list-none p-0 m-0">
         <li>
-          <a href="/about" class="hover:text-gray-900 transition-colors">About</a>
+          <a href={`${import.meta.env.BASE_URL}about`} class="hover:text-gray-900 transition-colors">About</a>
         </li>
         <li>
-          <a href="/privacy" class="hover:text-gray-900 transition-colors">Privacy</a>
+          <a href={`${import.meta.env.BASE_URL}privacy`} class="hover:text-gray-900 transition-colors">Privacy</a>
         </li>
       </ul>
     </nav>
