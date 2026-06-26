@@ -30,7 +30,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          BASE_PATH: /private-file-tools/
+          BASE_PATH: /filehaven/
 
       - uses: actions/upload-pages-artifact@v3
         with:
