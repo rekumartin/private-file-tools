@@ -209,36 +209,6 @@ const faqs: FaqItem[] = [
     </div>
   </section>
 
-  <!-- Why it's private -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 border-t border-stone-100 pt-14" aria-labelledby="privacy-heading">
-    <p id="privacy-heading" class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-8">Why it's private</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-8">
-      {[
-        {
-          heading: 'Files never leave your device',
-          body: 'Processing runs in your browser tab using JavaScript. Nothing is sent over the network — there is no server to send it to.',
-        },
-        {
-          heading: 'Works even when offline',
-          body: "Once the page loads, disconnect your internet. Everything still works. That's the only proof that matters.",
-        },
-        {
-          heading: 'No account, no tracking',
-          body: "No sign-up, no cookies, no analytics by default. We can't see your files even if we wanted to.",
-        },
-        {
-          heading: 'Open source',
-          body: 'Every line that runs in your browser is public — readable, auditable, and self-hostable.',
-        },
-      ].map(({ heading, body }) => (
-        <div>
-          <p class="font-semibold text-stone-900 text-sm mb-2">{heading}</p>
-          <p class="text-sm text-stone-500 leading-relaxed">{body}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- Comparison table -->
   <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 border-t border-stone-100 pt-14">
     <p class="text-xs font-medium tracking-widest uppercase text-stone-400 mb-8">vs. typical online converters</p>
