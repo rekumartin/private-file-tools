@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://filehaven.com',
+  site: 'https://filehaven.pages.dev',
   base: process.env.BASE_PATH || '/',
   vite: {
     optimizeDeps: {

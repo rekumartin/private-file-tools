@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://filehaven.com/sitemap.xml
+Sitemap: https://filehaven.pages.dev/sitemap.xml
