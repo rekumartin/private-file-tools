@@ -2,6 +2,18 @@
 
 Privacy-first, client-side file tools. Every operation runs entirely in the user's browser — no uploads, no backend, no data collection.
 
+**Live:** [filehaven.pages.dev](https://filehaven.pages.dev)
+
+![FileHaven homepage](.github/screenshot.png)
+
+## Why
+
+Every file you give these tools — a HEIC photo, a PDF, anything — is processed with JavaScript running in your own browser tab and never leaves your device. There is no server that could receive it, log it, or get breached. You can disconnect from the internet after the page loads and the tools keep working — that's the proof.
+
+## Self-hosting
+
+It's a static Astro site — no backend, no env vars required: clone the repo, `npm install`, `npm run build`, then serve the `dist/` folder with any static host.
+
 ## Stack
 
 - **Astro 6** — static site generator
@@ -10,7 +22,7 @@ Privacy-first, client-side file tools. Every operation runs entirely in the user
 - **heic2any** — HEIC/HEIF → JPG, browser-side WebAssembly
 - **piexifjs** — EXIF read/strip for JPEG (lazy-loaded)
 - **pdfjs-dist** — PDF page rendering for rasterize mode (lazy-loaded)
-- **pdf-lib** — PDF construction and optimize mode (lazy-loaded)
+- **pdf-lib** — PDF construction, merging, and optimize mode (lazy-loaded)
 
 ## Security
 
